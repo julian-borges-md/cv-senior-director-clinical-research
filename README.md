@@ -67,23 +67,6 @@
       font-size: 0.95rem;
     }
 
-    /* Upgrade: photo + identity block */
-    .header-identity {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .profile-photo {
-      width: 96px;
-      height: 96px;
-      object-fit: cover;
-      border-radius: 0.75rem;
-      border: 1px solid #e5e7eb;
-      background: #ffffff;
-      flex: 0 0 auto;
-    }
-
     .tagline {
       margin-top: 0.25rem;
       font-weight: 600;
@@ -128,6 +111,54 @@
       margin-right: 0.1rem;
     }
 
+    /* --- NEW: profile photo sizing and alignment (only change requested) --- */
+    .header-identity {
+      display: flex;
+      align-items: stretch; /* lets photo match the text block height */
+      gap: 1rem;
+    }
+
+    .header-identity-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-photo {
+      height: 100%;              /* match the height of the text block */
+      min-height: 168px;         /* ensures it is not small */
+      max-height: 220px;         /* prevents it from becoming too tall */
+      width: auto;               /* preserve aspect ratio */
+      aspect-ratio: 3 / 4;       /* stable portrait ratio */
+      object-fit: cover;         /* crop nicely */
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .header-identity { align-items: flex-start; }
+      .profile-photo {
+        min-height: 150px;
+        max-height: 190px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-identity {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .profile-photo {
+        width: 140px;            /* on mobile, keep readable size */
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: 3 / 4;
+      }
+    }
+    /* --- END NEW --- */
+
     .section { margin-top: 1.5rem; }
 
     .two-column {
@@ -140,18 +171,6 @@
     @media (max-width: 900px) {
       .two-column { grid-template-columns: 1fr; }
       .header-right { text-align: left; }
-    }
-
-    /* Upgrade: responsive photo layout */
-    @media (max-width: 600px) {
-      .header-identity {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .profile-photo {
-        width: 84px;
-        height: 84px;
-      }
     }
 
     .card {
@@ -301,7 +320,7 @@
       a { color: #111827; text-decoration: none; }
       .badge { border: 1px solid #d1d5db; background: #ffffff; color: #111827; box-shadow: none; }
       .tech-card { background: #ffffff; }
-      .profile-photo { border: 1px solid #d1d5db; }
+      .profile-photo { box-shadow: none; }
     }
   </style>
 </head>
@@ -310,39 +329,37 @@
   <main class="page">
     <header class="header">
       <div class="header-left">
+        <!-- UPDATED: header identity wrapper + profile image -->
         <div class="header-identity">
-          <img
-            src="assets/profile.jpg"
-            alt="Julian Y. V. Borges, MD, MS"
-            class="profile-photo"
-          />
-          <div>
+          <img src="assets/profile.jpg" alt="Julian Y. V. Borges, MD, MS" class="profile-photo" />
+          <div class="header-identity-text">
             <h1>Julian Y. V. Borges, MD, MS</h1>
             <div class="tagline">Senior Director Clinical Research Leader, Clinical Informatics and Translational Infrastructure</div>
             <p class="muted small">
               Physician scientist and senior research leader bridging clinical departments, clinical trials operations, and research infrastructure.
               Focus on clinical enterprise alignment, investigator enablement, governance, data strategy, and industry partnerships to expand trials and translational impact.
             </p>
+
+            <div class="badge-row" aria-label="Profile links">
+              <a class="badge" href="https://doi.org/10.1093/jamiaopen/ooaf177" target="_blank" rel="noopener">JAMIA Open</a>
+              <a class="badge" href="https://doi.org/10.5281/zenodo.18248286" target="_blank" rel="noopener">Zenodo</a>
+              <a class="badge" href="https://orcid.org/0009-0001-9929-3135" target="_blank" rel="noopener">ORCID</a>
+
+              <a class="badge" href="https://x.com/julianborgesmd" target="_blank" rel="noopener" aria-label="X profile">
+                <svg class="badge-x-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M18.9 2H22l-6.8 7.8L23.2 22h-6.7l-5.2-6.5L5.7 22H2.6l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2zm-1.2 18h1.7L7.1 3.9H5.3L17.7 20z"></path>
+                </svg>
+              </a>
+
+              <a class="badge" href="https://www.linkedin.com/in/julian-borges-md/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+                <svg class="badge-in-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.476-.9 1.637-1.85 3.368-1.85 3.6 0 4.266 2.368 4.266 5.455v6.286zM5.337 7.433A2.062 2.062 0 0 1 3.27 5.37c0-1.14.925-2.067 2.067-2.067 1.141 0 2.066.926 2.066 2.067 0 1.141-.925 2.063-2.066 2.063zM6.814 20.452H3.861V9h2.953v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
-
-        <div class="badge-row" aria-label="Profile links">
-          <a class="badge" href="https://doi.org/10.1093/jamiaopen/ooaf177" target="_blank" rel="noopener">JAMIA Open</a>
-          <a class="badge" href="https://doi.org/10.5281/zenodo.18248286" target="_blank" rel="noopener">Zenodo</a>
-          <a class="badge" href="https://orcid.org/0009-0001-9929-3135" target="_blank" rel="noopener">ORCID</a>
-
-          <a class="badge" href="https://x.com/julianborgesmd" target="_blank" rel="noopener" aria-label="X profile">
-            <svg class="badge-x-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M18.9 2H22l-6.8 7.8L23.2 22h-6.7l-5.2-6.5L5.7 22H2.6l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2zm-1.2 18h1.7L7.1 3.9H5.3L17.7 20z"></path>
-            </svg>
-          </a>
-
-          <a class="badge" href="https://www.linkedin.com/in/julian-borges-md/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-            <svg class="badge-in-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.476-.9 1.637-1.85 3.368-1.85 3.6 0 4.266 2.368 4.266 5.455v6.286zM5.337 7.433A2.062 2.062 0 0 1 3.27 5.37c0-1.14.925-2.067 2.067-2.067 1.141 0 2.066.926 2.066 2.067 0 1.141-.925 2.063-2.066 2.063zM6.814 20.452H3.861V9h2.953v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-        </div>
+        <!-- END UPDATED -->
       </div>
 
       <div class="header-right" aria-label="Contact information">
