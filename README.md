@@ -269,22 +269,25 @@
 
     .profile-photo {
       width: auto;
-      height: 164px;
+      height: 156px;               /* UPDATED: reduced to fit headings cleanly */
       aspect-ratio: 3 / 4;
       object-fit: cover;
       border-radius: 0.75rem;
       border: 1px solid #e5e7eb;
       background: #ffffff;
       flex: 0 0 auto;
+
+      align-self: flex-start;      /* UPDATED: ensures top alignment */
+      margin-top: 0.25rem;         /* UPDATED: visually aligns with the h1 baseline */
     }
 
     @media (max-width: 900px) {
-      .profile-photo { height: 152px; }
+      .profile-photo { height: 146px; }  /* UPDATED: proportional reduction */
     }
 
     @media (max-width: 600px) {
       .header-identity { flex-direction: column; }
-      .profile-photo { height: auto; width: 160px; aspect-ratio: 3 / 4; }
+      .profile-photo { height: auto; width: 160px; aspect-ratio: 3 / 4; margin-top: 0; }
     }
 
     @media print {
