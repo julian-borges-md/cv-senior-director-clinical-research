@@ -281,7 +281,7 @@
     <header class="header">
       <div class="header-left">
         <h1>Julian Y. V. Borges, MD, MS</h1>
-        <div class="tagline">Senior Director Clinical Research Candidate, Clinical Informatics and Translational Infrastructure</div>
+        <div class="tagline">Senior Director Clinical Research Leader, Clinical Informatics and Translational Infrastructure</div>
         <p class="muted small">
           Physician scientist and senior research leader bridging clinical departments, clinical trials operations, and research infrastructure.
           Focus on clinical enterprise alignment, investigator enablement, governance, data strategy, and industry partnerships to expand trials and translational impact.
