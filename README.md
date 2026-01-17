@@ -364,7 +364,7 @@
     </section>
 
     <section class="section">
-      <h2>MaineHealth Senior Director Clinical Research Alignment</h2>
+      <h2>Senior Director Clinical Research</h2>
       <div class="card">
         <ul>
           <li><strong>Clinical department liaison:</strong> experience translating clinical priorities into structured research and informatics workflows that clinicians can adopt, with clear accountability and operational feasibility.</li>
@@ -375,7 +375,7 @@
           <li><strong>Equity and access:</strong> operational approach to broad participation in research through workflow design, service line integration, and transparent inclusion metrics.</li>
         </ul>
         <p class="muted small" style="margin-top:0.75rem;">
-          Note: CV emphasizes infrastructure building, service line integration, governance, and execution systems aligned to a clinical research enterprise.
+          Note: Dr. Borges's skills emphasizes infrastructure building, service line integration, governance, and execution systems aligned to a clinical research enterprise.
         </p>
       </div>
     </section>
