@@ -111,6 +111,59 @@
       margin-right: 0.1rem;
     }
 
+    /* --- NEW: profile photo sizing and alignment (only change requested) --- */
+    .header-identity {
+      display: flex;
+      align-items: stretch; /* lets photo match the text block height */
+      gap: 1rem;
+    }
+
+    .header-identity-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-photo {
+      height: 100%;              /* match the height of the text block */
+      min-height: 168px;         /* ensures it is not small */
+      max-height: 220px;         /* prevents it from becoming too tall */
+      width: auto;               /* preserve aspect ratio */
+      aspect-ratio: 3 / 4;       /* stable portrait ratio */
+      object-fit: cover;         /* crop nicely */
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      flex: 0 0 auto;
+
+      /* ADDED: pull photo down (only adjustment you requested now) */
+      margin-top: 0.65rem;
+    }
+
+    @media (max-width: 900px) {
+      .header-identity { align-items: flex-start; }
+      .profile-photo {
+        min-height: 150px;
+        max-height: 190px;
+        margin-top: 0.5rem; /* keep the same “pulled down” feel on tablet */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-identity {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .profile-photo {
+        width: 140px;            /* on mobile, keep readable size */
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: 3 / 4;
+        margin-top: 0.35rem;     /* slight spacing on mobile */
+      }
+    }
+    /* --- END NEW --- */
+
     .section { margin-top: 1.5rem; }
 
     .two-column {
@@ -260,36 +313,6 @@
     .tech-title { font-weight: 800; margin-bottom: 0.25rem; }
     .tech-text { color: #374151; font-size: 0.95rem; }
 
-    /* Profile photo sizing only */
-    .header-identity {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .profile-photo {
-      width: auto;
-      height: 156px;               /* UPDATED: reduced to fit headings cleanly */
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      border-radius: 0.75rem;
-      border: 1px solid #e5e7eb;
-      background: #ffffff;
-      flex: 0 0 auto;
-
-      align-self: flex-start;      /* UPDATED: ensures top alignment */
-      margin-top: 0.25rem;         /* UPDATED: visually aligns with the h1 baseline */
-    }
-
-    @media (max-width: 900px) {
-      .profile-photo { height: 146px; }  /* UPDATED: proportional reduction */
-    }
-
-    @media (max-width: 600px) {
-      .header-identity { flex-direction: column; }
-      .profile-photo { height: auto; width: 160px; aspect-ratio: 3 / 4; margin-top: 0; }
-    }
-
     @media print {
       :root { background: #ffffff; }
       .page {
@@ -302,6 +325,7 @@
       a { color: #111827; text-decoration: none; }
       .badge { border: 1px solid #d1d5db; background: #ffffff; color: #111827; box-shadow: none; }
       .tech-card { background: #ffffff; }
+      .profile-photo { box-shadow: none; }
     }
   </style>
 </head>
@@ -310,6 +334,7 @@
   <main class="page">
     <header class="header">
       <div class="header-left">
+        <!-- UPDATED: header identity wrapper + profile image -->
         <div class="header-identity">
           <img src="assets/profile.jpg" alt="Julian Y. V. Borges, MD, MS" class="profile-photo" />
           <div class="header-identity-text">
@@ -339,6 +364,7 @@
             </div>
           </div>
         </div>
+        <!-- END UPDATED -->
       </div>
 
       <div class="header-right" aria-label="Contact information">
