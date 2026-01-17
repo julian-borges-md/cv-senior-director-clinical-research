@@ -67,6 +67,23 @@
       font-size: 0.95rem;
     }
 
+    /* Upgrade: photo + identity block */
+    .header-identity {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile-photo {
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      flex: 0 0 auto;
+    }
+
     .tagline {
       margin-top: 0.25rem;
       font-weight: 600;
@@ -123,6 +140,18 @@
     @media (max-width: 900px) {
       .two-column { grid-template-columns: 1fr; }
       .header-right { text-align: left; }
+    }
+
+    /* Upgrade: responsive photo layout */
+    @media (max-width: 600px) {
+      .header-identity {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .profile-photo {
+        width: 84px;
+        height: 84px;
+      }
     }
 
     .card {
@@ -272,6 +301,7 @@
       a { color: #111827; text-decoration: none; }
       .badge { border: 1px solid #d1d5db; background: #ffffff; color: #111827; box-shadow: none; }
       .tech-card { background: #ffffff; }
+      .profile-photo { border: 1px solid #d1d5db; }
     }
   </style>
 </head>
@@ -280,12 +310,21 @@
   <main class="page">
     <header class="header">
       <div class="header-left">
-        <h1>Julian Y. V. Borges, MD, MS</h1>
-        <div class="tagline">Senior Director Clinical Research Leader, Clinical Informatics and Translational Infrastructure</div>
-        <p class="muted small">
-          Physician scientist and senior research leader bridging clinical departments, clinical trials operations, and research infrastructure.
-          Focus on clinical enterprise alignment, investigator enablement, governance, data strategy, and industry partnerships to expand trials and translational impact.
-        </p>
+        <div class="header-identity">
+          <img
+            src="assets/profile.jpg"
+            alt="Julian Y. V. Borges, MD, MS"
+            class="profile-photo"
+          />
+          <div>
+            <h1>Julian Y. V. Borges, MD, MS</h1>
+            <div class="tagline">Senior Director Clinical Research Leader, Clinical Informatics and Translational Infrastructure</div>
+            <p class="muted small">
+              Physician scientist and senior research leader bridging clinical departments, clinical trials operations, and research infrastructure.
+              Focus on clinical enterprise alignment, investigator enablement, governance, data strategy, and industry partnerships to expand trials and translational impact.
+            </p>
+          </div>
+        </div>
 
         <div class="badge-row" aria-label="Profile links">
           <a class="badge" href="https://doi.org/10.1093/jamiaopen/ooaf177" target="_blank" rel="noopener">JAMIA Open</a>
