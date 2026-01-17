@@ -656,7 +656,7 @@
 
           <div class="subheading">Peer Review</div>
           <p class="small">
-            Reviewer for journals including PLOS Digital Health, European Heart Journal Digital Health, and European Journal of Preventive Cardiology, focused on clinical research rigor, digital health translation, and clinical analytics integrity.
+            Reviewer for journals including PLOS Digital Health, European Heart Journal Digital Health, NaTure Reviews and European Journal of Preventive Cardiology, focused on clinical research rigor, digital health translation, and clinical analytics integrity.
           </p>
         </div>
       </div>
