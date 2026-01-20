@@ -502,7 +502,7 @@
           <ul>
             <li>Portuguese: Native</li>
             <li>English: Professional proficiency</li>
-            <li>Spanish: Intermediate</li>
+            <li>Spanish: Fluent</li>
             <li>French: Intermediate</li>
             <li>German: Basic</li>
           </ul>
